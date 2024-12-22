@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">FinancePlaner</string>
+    <string name="view_finances">View Finances</string>
+    <string name="add_cashflow_entry">Add New Cashflow Entry</string>
+    <string name="cancel">Back</string>
+    <string name="income">Income</string>
+    <string name="expenses">Expenses</string>
+    <string name="savings">Savings</string>
+    <string name="plus">+</string>
+    <string name="date">Date</string>
+    <string name="type">Type</string>
+    <string name="amount">Amount</string>
+    <string name="current">€</string>
+    <string name="track">Track</string>
+    <string name="tracked_income">Tracked Income</string>
+    <string name="start_date">Enter Start Date (yyyy-MM-dd)</string>
+    <string name="end_date">Enter End Date (yyyy-MM-dd)</string>
+    <string name="search">Search</string>
+    <string name="delete_entry">Delete Entries</string>
+    <string name="delete_income">Delete Income</string>
+    <string name="delete_expenses">Delete Expenses</string>
+</resources>

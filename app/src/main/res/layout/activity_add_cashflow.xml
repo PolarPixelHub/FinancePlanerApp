@@ -1,52 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!-- Top Layer: Title and Add Button -->
+    <!-- Top Title Text -->
+    <TextView
+        android:id="@+id/top_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="16dp"
+        android:text="@string/add_cashflow_entry"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Row of Buttons for Income, Expense, and Savings -->
     <LinearLayout
         android:id="@+id/top_layer"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="60dp">
-
-        <TextView
-            android:id="@+id/top_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:text="@string/add_cashflow_entry"
-            android:textSize="24sp"
-            android:textAlignment="viewStart" />
-
-        <ImageButton
-            android:id="@+id/btnAdd"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/round_button"
-            android:contentDescription="@string/plus"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_plus"
-            app:tint="@color/white" />
-    </LinearLayout>
-
-    <!-- Middle Layer: Buttons for Income, Expense, Savings -->
-    <LinearLayout
-        android:id="@+id/middle_layer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginBottom="16dp">
+        app:layout_constraintTop_toBottomOf="@id/top_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5">
 
         <!-- Income Button -->
         <Button
@@ -56,104 +37,121 @@
             android:layout_height="wrap_content"
             android:text="@string/income" />
 
-        <!-- Add more buttons here -->
+        <!-- Expenses Button -->
+        <Button
+            android:id="@+id/btn_expenses"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/expenses" />
+
+        <!-- Savings Button -->
+        <Button
+            android:id="@+id/btn_savings"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/savings" />
     </LinearLayout>
 
-    <!-- Input Layer: Type, Amount, Date -->
-    <LinearLayout
-        android:id="@+id/income_layer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
+    <!-- Add Button (Initially Hidden) -->
+    <ImageButton
+        android:id="@+id/btnAdd"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/round_button"
+        android:contentDescription="@string/plus"
+        android:scaleType="center"
         android:visibility="gone"
-        android:padding="16dp">
+        android:src="@drawable/ic_plus"
+        app:tint="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/top_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
 
-        <!-- Row 1: Type Label and Spinner -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="16dp">
+    <!-- Type Label and Spinner -->
+    <TextView
+        android:id="@+id/tv_type_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/type"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/top_layer"
+        app:layout_constraintStart_toStartOf="@id/top_layer"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="130dp"/>
+    <Spinner
+        android:id="@+id/spinner_entry_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="37dp"
+        app:layout_constraintStart_toEndOf="@id/tv_type_label"
+        app:layout_constraintTop_toBottomOf="@id/top_layer" />
 
-            <TextView
-                android:id="@+id/tv_type_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/type" />
+    <!-- Amount Field -->
+    <TextView
+        android:id="@+id/amountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/amount"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/tv_type_label"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="16dp" />
 
-            <Spinner
-                android:id="@+id/spinner_entry_types"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp" />
-        </LinearLayout>
+    <EditText
+        android:id="@+id/et_amount"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:autofillHints=""
+        android:hint="@string/current"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toEndOf="@id/amountText"
+        app:layout_constraintTop_toBottomOf="@id/spinner_entry_types"
+        android:layout_marginStart="8dp" />
 
-        <!-- Row 2: Amount Field -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="16dp">
+    <!-- Date Field -->
+    <TextView
+        android:id="@+id/tv_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/amountText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="16dp" />
 
-            <TextView
-                android:id="@+id/amountText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/amount"
-                android:layout_marginEnd="8dp" />
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@id/tv_date_label"
+        app:layout_constraintTop_toBottomOf="@id/et_amount"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"/>
 
-            <EditText
-                android:id="@+id/et_amount"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:hint="@string/current"
-                android:inputType="numberDecimal" />
-        </LinearLayout>
-
-        <!-- Row 3: Date Field -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="24dp">
-
-            <TextView
-                android:id="@+id/tv_date_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/date" />
-
-            <TextView
-                android:id="@+id/tv_date"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <!-- Footer Layer: Cancel and Track Buttons -->
+    <!-- Footer Buttons for Cancel and Track -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="bottom">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp">
 
         <Button
-            android:id="@+id/btn_back"
+            android:id="@+id/btn_cancel"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/cancel" />
-
-        <View
-            android:layout_width="16dp"
-            android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/btn_track"
@@ -162,6 +160,5 @@
             android:layout_height="wrap_content"
             android:text="@string/track" />
     </LinearLayout>
-</LinearLayout>
 
-
+</androidx.constraintlayout.widget.ConstraintLayout>

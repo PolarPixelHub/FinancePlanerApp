@@ -1,12 +1,13 @@
-package polarpixel.financeplaner.data
+package com.example.financeplaner.data
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.financeplaner.R
+import com.example.financeplaner.data.IncomeEntity
 import androidx.recyclerview.widget.DiffUtil
-import polarpixel.financeplaner.R
 
 class IncomeAdapter(private var incomeList: List<IncomeEntity>) :
     RecyclerView.Adapter<IncomeAdapter.IncomeViewHolder>() {
@@ -60,4 +61,3 @@ class IncomeAdapter(private var incomeList: List<IncomeEntity>) :
         }
     }
 }
-

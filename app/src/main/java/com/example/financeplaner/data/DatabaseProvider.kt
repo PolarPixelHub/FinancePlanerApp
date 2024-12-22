@@ -1,8 +1,7 @@
-package polarpixel.financeplaner.data
+package com.example.financeplaner.data
 
 import android.content.Context
 import androidx.room.Room
-import polarpixel.financeplaner.data.FinanceDatabase
 
 object DatabaseProvider {
     private var instance: FinanceDatabase? = null

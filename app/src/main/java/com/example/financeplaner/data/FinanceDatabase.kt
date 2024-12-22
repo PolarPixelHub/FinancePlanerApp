@@ -1,10 +1,11 @@
-package polarpixel.financeplaner.data
+package com.example.financeplaner.data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import polarpixel.financeplaner.data.dao.IncomeDao
+import com.example.financeplaner.data.IncomeEntity
+import com.example.financeplaner.data.dao.IncomeDao
 
 @Database(entities = [IncomeEntity::class], version = 1)
 abstract class FinanceDatabase : RoomDatabase() {

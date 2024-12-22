@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "polarpixel.financeplaner"
+    namespace = "com.example.financeplaner"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "polarpixel.financeplaner"
+        applicationId = "com.example.financeplaner"
         minSdk = 22
         targetSdk = 35
         versionCode = 1
@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.ui.desktop)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

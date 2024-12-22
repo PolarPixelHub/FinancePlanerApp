@@ -1,4 +1,4 @@
-package polarpixel.financeplaner
+package com.example.financeplaner
 
 import android.os.Bundle
 import android.widget.Toast
@@ -6,9 +6,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import polarpixel.financeplaner.data.ui.FinanceViewModel
-import polarpixel.financeplaner.databinding.ActivityViewFinanceSetDateBinding
-import polarpixel.financeplaner.data.IncomeAdapter
+import com.example.financeplaner.databinding.ActivityViewFinanceBinding
+import com.example.financeplaner.data.ui.FinanceViewModel
+import com.example.financeplaner.data.ui.IncomeAdapter
+import com.example.financeplaner.databinding.ActivityViewFinanceSetDateBinding
 
 class ViewFinanceSetDateActivity : AppCompatActivity() {
 
@@ -18,15 +19,11 @@ class ViewFinanceSetDateActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setContentView(R.layout.activity_cashflow_all)
-
         binding = ActivityViewFinanceSetDateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Initialize RecyclerView
         incomeAdapter = IncomeAdapter(emptyList())
-
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@ViewFinanceSetDateActivity)
             adapter = incomeAdapter

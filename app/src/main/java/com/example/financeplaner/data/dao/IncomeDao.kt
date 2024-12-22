@@ -1,11 +1,10 @@
-package polarpixel.financeplaner.data.dao
+package com.example.financeplaner.data.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import polarpixel.financeplaner.data.IncomeEntity
+import com.example.financeplaner.data.IncomeEntity
 
 @Dao
 interface IncomeDao {
@@ -25,13 +24,4 @@ interface IncomeDao {
     // Update an existing income record
     @Update
     suspend fun updateIncome(income: IncomeEntity)
-
-    @Query("DELETE FROM income WHERE type = :type")
-    fun deleteIncomeByType(type: String)
-
-    @Query("SELECT * FROM income WHERE date = :date")
-    fun getIncomeByDate(date: String): List<IncomeEntity>
-
-    @Delete
-    fun deleteIncome(incomeEntity: IncomeEntity)
 }

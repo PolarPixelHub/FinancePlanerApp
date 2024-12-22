@@ -1,16 +1,16 @@
-package polarpixel.financeplaner.data.ui
+package com.example.financeplaner.data.ui
 
 import android.app.Application
-import android.net.ParseException
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import polarpixel.financeplaner.data.repository.FinanceRepository
-import polarpixel.financeplaner.data.IncomeEntity
+import com.example.financeplaner.data.FinanceDatabase
+import com.example.financeplaner.data.repository.FinanceRepository
+import com.example.financeplaner.data.IncomeEntity
 import kotlinx.coroutines.launch
+import com.example.financeplaner.data.dao.IncomeDao
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.CoroutineScope
+import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -51,48 +51,16 @@ class FinanceViewModel(application: Application) : AndroidViewModel(application)
     fun loadAllIncome() {
         viewModelScope.launch(Dispatchers.IO) {
             val incomeData = repository.getAllIncome()
-                .sortedByDescending { incomeEntity ->
-                    // Handle empty or invalid dates
-                    val dateString = incomeEntity.date
-                    if (dateString.isNullOrEmpty()) {
-                        Log.e("FinanceViewModel", "Empty or null date found: $incomeEntity")
-                        null
-                    } else {
-                        try {
-                            SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(dateString)
-                        } catch (e: ParseException) {
-                            Log.e("FinanceViewModel", "Error parsing date: $dateString", e)
-                            null
-                        }
-                    }
-                }
-                .filterNotNull() // Exclude entries with null dates
+                .sortedByDescending { SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(it.date) }
             _incomeList.postValue(incomeData)
         }
     }
-
 
     // Function to load distinct income types
     fun loadIncomeTypes() {
         viewModelScope.launch(Dispatchers.IO) {
             val types = repository.getAllIncomeTypes()
             _incomeTypes.postValue(types)
-        }
-    }
-
-    fun deleteIncomeByType(type: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            repository.deleteIncomeByType(type)
-        }
-    }
-
-    fun getIncomeByDate(date: String): List<IncomeEntity> {
-        return repository.getIncomeByDate(date)
-    }
-
-    fun deleteIncome(incomeEntity: IncomeEntity) {
-        CoroutineScope(Dispatchers.IO).launch {
-            repository.deleteIncome(incomeEntity)
         }
     }
 }

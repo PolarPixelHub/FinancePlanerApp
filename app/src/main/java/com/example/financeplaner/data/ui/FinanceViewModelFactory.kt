@@ -1,9 +1,10 @@
-package polarpixel.financeplaner.data.ui
+package com.example.financeplaner.data.ui
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import polarpixel.financeplaner.data.ui.FinanceViewModel
+import com.example.financeplaner.data.repository.FinanceRepository
+import com.example.financeplaner.data.ui.FinanceViewModel
 
 class FinanceViewModelFactory(
     private val application: Application // Pass the application context here

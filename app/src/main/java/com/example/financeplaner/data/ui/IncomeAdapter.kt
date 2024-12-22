@@ -1,21 +1,20 @@
-package polarpixel.financeplaner.data.ui
+package com.example.financeplaner.data.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import polarpixel.financeplaner.data.IncomeEntity
-import polarpixel.financeplaner.R
+import com.example.financeplaner.R
+import com.example.financeplaner.data.IncomeEntity
 
-class IncomeAdapter(
-    private var incomeList: List<IncomeEntity>,
-    private val clickListener: (IncomeEntity, Int) -> Unit // Add the clickListener parameter
-) : RecyclerView.Adapter<IncomeAdapter.IncomeViewHolder>() {
+class IncomeAdapter(private var incomeList: List<IncomeEntity>) :
+    RecyclerView.Adapter<IncomeAdapter.IncomeViewHolder>() {
 
+    // Update the list of items shown in the RecyclerView
     fun setData(newIncomeList: List<IncomeEntity>) {
         incomeList = newIncomeList
-        notifyDataSetChanged()
+        notifyDataSetChanged() // Refresh RecyclerView data
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IncomeViewHolder {
@@ -26,9 +25,6 @@ class IncomeAdapter(
     override fun onBindViewHolder(holder: IncomeViewHolder, position: Int) {
         val income = incomeList[position]
         holder.bind(income)
-        holder.itemView.setOnClickListener {
-            clickListener(income, position) // Trigger the click listener
-        }
     }
 
     override fun getItemCount(): Int = incomeList.size
@@ -38,6 +34,7 @@ class IncomeAdapter(
         private val tvType: TextView = itemView.findViewById(R.id.tvType)
         private val tvDate: TextView = itemView.findViewById(R.id.tvDate)
 
+        // Bind each IncomeEntity's data to the UI
         fun bind(income: IncomeEntity) {
             tvAmount.text = income.amount.toString()
             tvType.text = income.type
@@ -45,6 +42,3 @@ class IncomeAdapter(
         }
     }
 }
-
-
-

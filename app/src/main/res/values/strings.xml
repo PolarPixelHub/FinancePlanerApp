@@ -16,7 +16,4 @@
     <string name="start_date">Enter Start Date (yyyy-MM-dd)</string>
     <string name="end_date">Enter End Date (yyyy-MM-dd)</string>
     <string name="search">Search</string>
-    <string name="delete_entry">Delete Entries</string>
-    <string name="delete_income">Delete Income</string>
-    <string name="delete_expenses">Delete Expenses</string>
 </resources>

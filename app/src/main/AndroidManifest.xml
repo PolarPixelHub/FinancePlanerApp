@@ -22,9 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddCashflowActivity" />
-        <activity android:name=".CashflowAllActivity" />
-        <activity android:name=".ViewFinanceIncomeActivity" />
-        <!--<activity android:name=".DeleteActivity" /> -->
+        <activity android:name=".ViewFinanceActivity" />
     </application>
 
 </manifest>

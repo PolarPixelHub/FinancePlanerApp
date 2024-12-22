@@ -1,4 +1,4 @@
-package polarpixel.financeplaner
+package com.example.financeplaner
 
 import android.os.Bundle
 import android.content.Intent
@@ -6,26 +6,26 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import polarpixel.financeplaner.databinding.ActivityViewFinanceIncomeBinding
-import polarpixel.financeplaner.data.ui.*
-import polarpixel.financeplaner.data.IncomeAdapter
+import com.example.financeplaner.databinding.ActivityViewFinanceBinding
+import com.example.financeplaner.data.ui.*
+import com.example.financeplaner.data.IncomeAdapter
 
-class ViewFinanceActivityIncome : AppCompatActivity() {
+class ViewFinanceActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityViewFinanceIncomeBinding
+    private lateinit var binding: ActivityViewFinanceBinding
     private lateinit var incomeAdapter: IncomeAdapter
     private val financeViewModel: FinanceViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityViewFinanceIncomeBinding.inflate(layoutInflater)
+        binding = ActivityViewFinanceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Initialize RecyclerView
         incomeAdapter = IncomeAdapter(emptyList())
 
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@ViewFinanceActivityIncome)
+            layoutManager = LinearLayoutManager(this@ViewFinanceActivity)
             adapter = incomeAdapter
         }
 
@@ -38,7 +38,7 @@ class ViewFinanceActivityIncome : AppCompatActivity() {
         financeViewModel.loadAllIncome()
 
         // Set the OnClickListener for the "View Finance" button
-        binding.btnChooseDate.setOnClickListener {
+        binding.btnViewFinance.setOnClickListener {
             // Navigate to the ViewFinanceSetDateActivity
             val intentViewDated = Intent(this, ViewFinanceSetDateActivity::class.java)
             startActivity(intentViewDated)

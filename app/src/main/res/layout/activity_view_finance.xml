@@ -7,23 +7,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="polarpixel.financeplaner.ViewFinanceIncomeActivity">
-
-    <View
-        android:layout_width="16dp"
-        android:layout_height="70dp" />
+    tools:context=".ViewFinanceActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:text="@string/tracked_income"
         android:textSize="20sp"
         android:textStyle="bold"
         android:paddingBottom="8dp"/>
 
     <Button
-        android:id="@+id/btnChooseDate"
+        android:id="@+id/btnViewFinance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/date"
@@ -34,8 +29,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="300dp"
+        android:layout_height="565dp"
         tools:itemCount="5"
         tools:listitem="@layout/item_income"/>
 
@@ -47,7 +41,6 @@
         android:layout_marginBottom="16dp"
         android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_gravity="bottom|start"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </LinearLayout>
